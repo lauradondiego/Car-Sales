@@ -6,6 +6,7 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
 const App = () => {
+  /// take this info and move it into your reducer
   const state = {
     additionalPrice: 0,
     car: {
