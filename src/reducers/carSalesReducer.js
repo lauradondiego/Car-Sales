@@ -26,12 +26,21 @@ export const carSalesReducer = (state = initialState, action) => {
           ...state.car,
           features: [...state.car.features, action.payload]
         },
-        additionalPrice: state.additionalPrice + action.payload.price
+        additionalPrice: state.additionalPrice + action.payload.price,
+        store: state.store.filter(
+          el =>
+            ![
+              ...state.car.features.map(el => el.id),
+              action.payload.id
+            ].includes(el.id)
+        )
       };
     case "REMOVE_FEATURE":
       return {
         ...state,
-        car: { ...state.car, features: [...state.car.features, action.payload] }
+        features: state.car.filter(car => {
+          return !car;
+        })
       };
     default:
       return state;
